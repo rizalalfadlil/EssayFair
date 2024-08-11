@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# EssayFair: Fair Essay Evaluation Made Easy
 
-## Getting Started
+## Introduction
 
-First, run the development server:
+Welcome to **EssayFair**, an innovative application designed to provide fair and accurate evaluation of essay questions using Gemini AI. My goal is to ensure that every answer is assessed consistently and fairly.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## How It Works
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**EssayFair** utilizes a Gemini AI to evaluate essay responses. Here’s how it ensures fairness:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Consistent Grading**: To address potential inconsistencies in AI grading, **EssayFair** stores data on answers deemed correct and incorrect. This data serves as a reference for evaluating new answers. If a new answer closely resembles a previously accepted correct answer, it is graded as correct.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. **Anti-Cheating Mechanism**: I’ve integrated a robust anti-cheating feature. If an answer is more than 10 words long but does not match the provided answer key, yet closely resembles one of the correct answers from other participants, it is flagged as incorrect. This ensures each response is original and not copied.
 
-## Learn More
+3. **Dynamic Answer Key**: **EssayFair** allows question writers to include specific instructions or rules in the answer key. This feature is ideal for questions requiring flexible answers, such as those asking for at least three examples.
 
-To learn more about Next.js, take a look at the following resources:
+## Inspiration
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**EssayFair** was inspired by the challenges faced during computer-based exams in schools. Although exams were administered online, essay questions were still answered on paper due to the difficulty of grading text responses electronically. I recognized the need for a solution that could handle the variability of essay answers while maintaining accuracy and fairness.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Features
 
-## Deploy on Vercel
+- **Fair and Consistent Evaluation**: Ensures every essay is graded based on the same standards.
+- **Anti-Cheating Technology**: Prevents copying and ensures originality in responses.
+- **Customizable Answer Keys**: Allows for flexible grading with dynamic instructions.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Conclusion
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Thank you for exploring **EssayFair**. I am committed to making essay evaluation more equitable and efficient, helping educators and students alike navigate the complexities of essay grading with ease.
+
+For more information, visit the website or contact the support team.

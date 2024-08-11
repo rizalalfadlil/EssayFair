@@ -1,0 +1,7 @@
+write a mathematical operation that produces a value equal to 45 + 55
+
+Any arithmetic operation that results in 100. the answer must be an arithmetic operation, if the answer is 100 or those that do not alter it, like 100 × 1 is counted as incorrect
+
+Name at least 3 ASEAN countries that you know
+
+Three or more of the following countries: Brunei, Cambodia, Indonesia, Laos, Malaysia, Myanmar, the Philippines, Singapore, Thailand, Vietnam. less than that is incorrect
