@@ -1,8 +1,8 @@
 "use client";
 import {
-  generateAIQuestions,
-  getOneQuestions,
-  uploadQuestion,
+  generateAIEssay,
+  getOneEssay,
+  uploadEssay,
 } from "@/backend/questions";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -90,7 +90,7 @@ export default function Create() {
         title: "title is empty",
       });
     } else {
-      const response = await uploadQuestion({ title, questions, rules });
+      const response = await uploadEssay({ title, questions, rules });
       if (response.status === "ok") {
         router.push("/");
       } else {
@@ -100,7 +100,7 @@ export default function Create() {
   };
 
   const generateQuestions = async () => {
-    const result = await generateAIQuestions(title, generateNumber);
+    const result = await generateAIEssay(title, generateNumber);
     console.log(result);
     setQuestions(result);
   };

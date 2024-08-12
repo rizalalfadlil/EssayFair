@@ -1,5 +1,5 @@
 "use client";
-import { checkScore, getOneQuestions } from "@/backend/questions";
+import { checkScore, getOneEssay } from "@/backend/questions";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -53,7 +53,7 @@ export default function Answer({ params }: any) {
    }
 
   const getQuestions = async () => {
-    const response: any = await getOneQuestions(params.id);
+    const response: any = await getOneEssay(params.id);
     console.log("data", response);
     setdata(response);
     setquestions(response.questions);

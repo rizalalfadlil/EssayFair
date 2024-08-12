@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { Key, useEffect, useState } from "react";
-import { getQuestions } from "@/backend/questions";
+import { deleteEssay, getEssay } from "@/backend/questions";
 import { Card, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import {
@@ -16,29 +16,44 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Loader, LoaderCircle } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useRouter } from "next/navigation";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 
 export default function Home() {
   const [questions, setquestions]: any = useState([]);
   const [name, setname] = useState("");
   const [loading, setloading] = useState(true);
-  const [buttonLoading, setbuttonLoading] = useState(false)
+  const [buttonLoading, setbuttonLoading] = useState(false);
   const router = useRouter();
   useEffect(() => {
     getQuestionsData();
     localStorage.removeItem("name");
-  },[]);
+  }, []);
   const getQuestionsData = async () => {
     try {
-      const data = await getQuestions();
+      const data = await getEssay();
       setquestions(data);
       setloading(false);
     } catch (e) {
       console.log(e);
     }
   };
+  const onDelete = async (id: string | number) => {
+    await deleteEssay(id);
+    getQuestionsData();
+  };
   const onStart = async (id: string) => {
     localStorage.setItem("name", name);
-    setbuttonLoading(true)
+    setbuttonLoading(true);
     setTimeout(() => {
       router.push(`/${id}/answer`);
     }, 1000);
@@ -79,9 +94,40 @@ export default function Home() {
                       onClick={() => onStart(q.id)}
                       disabled={name === "" || buttonLoading}
                     >
-                      {buttonLoading?(<LoaderCircle className="animate-spin"/>):"Start"}
+                      {buttonLoading ? (
+                        <LoaderCircle className="animate-spin" />
+                      ) : (
+                        "Start"
+                      )}
                     </Button>
-                    <Button variant="secondary" onClick={()=>router.push(`${q.id}/score`)}>View Scoreboard</Button>
+                    <hr />
+                    <div className="grid grid-cols-2 gap-4">
+                      <Button
+                        variant="secondary"
+                        onClick={() => router.push(`${q.id}/score`)}
+                      >
+                        View Scoreboard
+                      </Button>
+                      <AlertDialog>
+                        <AlertDialogTrigger asChild>
+                          <Button variant="destructive">Delete</Button>
+                        </AlertDialogTrigger>
+                        <AlertDialogContent>
+                          <AlertDialogHeader>
+                            <AlertDialogTitle>delete</AlertDialogTitle>
+                            <AlertDialogDescription>
+                              delete {q.title}?
+                            </AlertDialogDescription>
+                          </AlertDialogHeader>
+                          <AlertDialogFooter>
+                            <AlertDialogAction onClick={() => onDelete(q.id)}>
+                              delete
+                            </AlertDialogAction>
+                            <AlertDialogCancel>cancel</AlertDialogCancel>
+                          </AlertDialogFooter>
+                        </AlertDialogContent>
+                      </AlertDialog>
+                    </div>
                   </DialogContent>
                 </Dialog>
               )

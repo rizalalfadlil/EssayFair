@@ -23,9 +23,3 @@ Welcome to **EssayFair**, an innovative application designed to provide fair and
 - **Fair and Consistent Evaluation**: Ensures every essay is graded based on the same standards.
 - **Anti-Cheating Technology**: Prevents copying and ensures originality in responses.
 - **Customizable Answer Keys**: Allows for flexible grading with dynamic instructions.
-
-## Conclusion
-
-Thank you for exploring **EssayFair**. I am committed to making essay evaluation more equitable and efficient, helping educators and students alike navigate the complexities of essay grading with ease.
-
-For more information, visit the website or contact the support team.

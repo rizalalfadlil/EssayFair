@@ -3,6 +3,7 @@ import { firebaseConfig } from "./firebase";
 import {
   addDoc,
   collection,
+  deleteDoc,
   doc,
   getDoc,
   getDocs,
@@ -42,18 +43,18 @@ const data = [
   },
 ];
 
-export const getQuestions = async () => {
+export const getEssay = async () => {
   const qDocs = await getDocs(qCollection);
   const questions = qDocs.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
   return questions;
 };
-export const getOneQuestions = async (id) => {
+export const getOneEssay = async (id) => {
   const qRef = doc(db, "q", id);
   const qDoc = await getDoc(qRef);
   const data = { ...qDoc.data(), id: qDoc.id };
   return data;
 };
-export const uploadQuestion = async (data) => {
+export const uploadEssay = async (data) => {
   try {
     const response = await addDoc(qCollection, data);
     return { status: "ok", message: response };
@@ -129,6 +130,11 @@ const updateQuestion = async (id, newData) => {
   await updateDoc(qRef, updatedData);
 };
 
+export const deleteEssay = async (id) =>{
+  const qRef = doc(db, "q", id);
+  await deleteDoc(qRef);
+}
+
 const getAIAnswer = async (data, rules) => {
   const instruction = `determine whether the answer is wrong or right from the given json data.
 
@@ -154,7 +160,7 @@ const getAIAnswer = async (data, rules) => {
   return JSON.parse(text);
 };
 
-export const generateAIQuestions = async (title, numbers) => {
+export const generateAIEssay = async (title, numbers) => {
   const instruction = `answer in the form of an array of objects (json) with the format: text(string, question), answer(string, containing the answer or criteria for the correct answer), acceptedAnswer: (empty array), rejectedAnswer: (empty array)
 
   - for "answer" you can fill in a definite answer such as
