@@ -30,7 +30,7 @@ export default function Page({ params }: any) {
     <div className="p-4 space-y-4 responsive h-screen flex flex-col">
       <h1>Scoreboard</h1>
       <ScrollArea className="space-y-2 grow">
-        {data.map((d: { name: string; score: number | string }, i: number) => (
+        {data.map((d: { name: string; score: number | string;answers:any}, i: number) => (
           <Card key={i} className="p-4 my-2 grid grid-cols-4 items-center">
             <span className="w-fit">{i + 1}</span>
             <span>{d.name}</span>
@@ -42,8 +42,9 @@ export default function Page({ params }: any) {
               <DialogContent>
                 <DialogTitle>{d.name} results</DialogTitle>
                 <ScrollArea className="h-64">
-                  {d.answers.map((a, i) => (
+                  {d.answers.map((a:any, i:Key) => (
                     <Alert
+                    key={i}
                       variant={a.correct ? "default" : "destructive"}
                       className="my-2"
                     >
