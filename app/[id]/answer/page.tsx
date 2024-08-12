@@ -145,6 +145,7 @@ export default function Answer({ params }: any) {
         <ScrollArea className="h-80">
           {result?.answers.map((a: { correct: any; question: string | number | bigint | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<React.AwaitedReactNode> | null | undefined; answer: string | number | bigint | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<React.AwaitedReactNode> | null | undefined; reason: string | number | bigint | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | Iterable<React.ReactNode> | React.ReactPortal | Promise<React.AwaitedReactNode> | null | undefined; }, i: any) => (
             <Alert
+            key={i}
               variant={a.correct ? "default" : "destructive"}
               className="my-2"
             >
